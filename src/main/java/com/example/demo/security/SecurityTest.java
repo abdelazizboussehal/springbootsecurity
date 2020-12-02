@@ -1,5 +1,6 @@
-package com.example.demo;
+package com.example.demo.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,16 +11,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
 public class SecurityTest extends WebSecurityConfigurerAdapter {
+    @Autowired
+    MyUserDetailsService myUserDetailsService;
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
+        auth.userDetailsService(myUserDetailsService);
+        /*auth.inMemoryAuthentication()
                 .withUser("aziz")
                 .password("aziz")
                 .roles("USER")
                 .and()
                 .withUser("foo")
                 .password("foufa")
-                .roles("ADMIN")
+                .roles("ADMIN")*/
         ;
     }
     @Bean
