@@ -1,12 +1,12 @@
 package com.example.demo.cours;
 
+import com.example.demo.security.ReportService;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +15,10 @@ public class CoursController {
 
     @Autowired
     private CrudCour crudCour;
+
+    @Autowired
+    private ReportService reportService;
+
     @RequestMapping("/cours")
     public @ResponseBody List<Cour> getAll(){
         List<Cour> cours=new ArrayList<>();
@@ -40,6 +44,13 @@ public class CoursController {
     @RequestMapping("/admin")
     public @ResponseBody String admin(){
         return "<h1> i am Admin</h1>";
+    }
+
+
+    @RequestMapping("/report/{type}")
+    public @ResponseBody String report(@PathVariable("type") String type) throws FileNotFoundException, JRException {
+        return reportService.exportReport(type);
+
     }
 
 }

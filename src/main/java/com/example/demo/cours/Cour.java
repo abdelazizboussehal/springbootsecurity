@@ -7,9 +7,18 @@ import javax.persistence.Id;
 
 @Entity
 public class Cour {
+    public Cour(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     @Id
     String id;
     String name;
+
+    public Cour() {
+
+    }
 
     public String getId() {
         return id;

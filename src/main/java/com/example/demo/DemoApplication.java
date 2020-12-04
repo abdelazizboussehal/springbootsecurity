@@ -1,13 +1,12 @@
 package com.example.demo;
 
-import com.example.demo.user.userRopository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackageClasses = userRopository.class)
+//enable for use all repository like user and cours
+@EnableAsync
 public class DemoApplication {
 
 	public static void main(String[] args) {
