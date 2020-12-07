@@ -54,9 +54,11 @@ public class SecurityTest extends WebSecurityConfigurerAdapter {
                 .and().formLogin();*/
 
         http.csrf().disable()
-                .authorizeRequests().antMatchers("/authenticate").permitAll().
-                anyRequest().authenticated().and().
-                exceptionHandling().and().sessionManagement()
+                .authorizeRequests().antMatchers("/authenticate").permitAll()
+                .antMatchers("/user").permitAll()
+                .antMatchers("/admin").hasAnyRole("ADMIN")
+                .anyRequest().authenticated().and()
+                .exceptionHandling().and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);//Disable session for jwt
         // Add costume filter
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

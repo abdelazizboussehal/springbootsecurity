@@ -1,3 +1,7 @@
+/*
+* 1 get jwt from header
+* 2 verify validation jwd and context and check authority
+* */
 package com.example.demo.filters;
 
 import com.example.demo.services.JWTservice;
