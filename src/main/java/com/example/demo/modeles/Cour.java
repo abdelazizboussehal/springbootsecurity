@@ -1,4 +1,4 @@
-package com.example.demo.cours;
+package com.example.demo.modeles;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 

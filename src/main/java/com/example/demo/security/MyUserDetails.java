@@ -2,9 +2,13 @@ package com.example.demo.security;
 
 import com.example.demo.user.User;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 public class MyUserDetails implements UserDetails {
     public User user;
@@ -14,17 +18,22 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        String[] rolesList= user.getRoles().split(",");
+        List<SimpleGrantedAuthority> simpleGrantedAuthorityList=new ArrayList<>();
+        simpleGrantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_USER"));
+        simpleGrantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+
+        return simpleGrantedAuthorityList;
     }
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return "root";
     }
 
     @Override
     public String getUsername() {
-        return user.getUserName();
+        return "root";
     }
 
     @Override

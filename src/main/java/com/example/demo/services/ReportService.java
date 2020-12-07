@@ -1,6 +1,6 @@
 package com.example.demo.services;
-import com.example.demo.cours.Cour;
-import com.example.demo.cours.CrudCour;
+import com.example.demo.modeles.Cour;
+import com.example.demo.repositories.CrudCour;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;

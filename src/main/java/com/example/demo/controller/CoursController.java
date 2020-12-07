@@ -1,5 +1,7 @@
-package com.example.demo.cours;
+package com.example.demo.controller;
 
+import com.example.demo.modeles.Cour;
+import com.example.demo.repositories.CrudCour;
 import com.example.demo.services.ReportService;
 import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,18 +35,7 @@ public class CoursController {
         crudCour.findAll().forEach(cours::add);
         return cours;
     }
-    @RequestMapping("/")
-    public @ResponseBody String all(){
-        return "<h1> i am all</h1>";
-    }
-    @RequestMapping("/user")
-    public @ResponseBody String user(){
-        return "<h1> i am user</h1>";
-    }
-    @RequestMapping("/admin")
-    public @ResponseBody String admin(){
-        return "<h1> i am Admin</h1>";
-    }
+
 
 
     @RequestMapping("/report/{type}")
