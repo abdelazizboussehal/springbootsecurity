@@ -1,6 +1,6 @@
 package com.example.demo.cours;
 
-import com.example.demo.security.ReportService;
+import com.example.demo.services.ReportService;
 import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
