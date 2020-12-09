@@ -1,23 +1,27 @@
 package com.example.demo.modeles;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.example.demo.modeles.annonce.Comment;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class MyUser {
     @Id
     private String id;
-    @Column(unique=true)
+    @Column(unique=true,name = "user_name")
     private String userName;
-    private String Password;
+    private String password;
     private String role;
     private int active;
+
+    @OneToMany(mappedBy="ruser",cascade = CascadeType.ALL)
+    private Set<Comment> rcomment;
 
     public MyUser(String id, String userName, String password, String role, int active) {
         this.id = id;
         this.userName = userName;
-        Password = password;
+        this.password = password;
         this.role = role;
         this.active = active;
     }
@@ -31,11 +35,11 @@ public class MyUser {
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
     public String getRole() {
@@ -60,7 +64,7 @@ public class MyUser {
     public MyUser(String id, String userName, String password, String role) {
         this.id = id;
         this.userName = userName;
-        Password = password;
+        this.password = password;
         this.role = role;
     }
 
