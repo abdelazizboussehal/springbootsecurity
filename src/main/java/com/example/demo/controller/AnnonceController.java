@@ -4,6 +4,7 @@ import com.example.demo.exeptions.ResourceNotFoundException;
 import com.example.demo.modeles.annonce.Annonce;
 import com.example.demo.repositories.annonce.CrudAnnonce;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,8 +29,11 @@ public class AnnonceController {
                         "annonce with this: "+id+" id not found"));
     }
 
-    @RequestMapping(method = RequestMethod.POST,value = "/annonce/")
+    @RequestMapping(method = RequestMethod.POST,value = "/annonce")
+    // Authority only for writing
+    @PreAuthorize("hasAnyAuthority('annonce:write')")
     public Annonce annonce(@RequestBody Annonce annonce){
+
         return crudAnnonce.save(annonce);
     }
 }
