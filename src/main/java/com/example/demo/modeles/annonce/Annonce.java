@@ -11,6 +11,8 @@ public class Annonce {
     private int id;
     private int price;
     private String type;
+    @Column(name = "product_name")
+    private String productName;
     private String categorise;
     private String description;
     @Column(name = "technical_form")
@@ -108,5 +110,13 @@ public class Annonce {
 
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 }

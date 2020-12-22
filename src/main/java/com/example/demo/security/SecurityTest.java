@@ -57,6 +57,7 @@ public class SecurityTest extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable()
                 .authorizeRequests().antMatchers("/authenticate").permitAll()
+                .antMatchers("/annonce/**").permitAll()
                 .antMatchers("/user").permitAll()
                 .antMatchers("/admin").hasAnyRole("ADMIN")
                 .anyRequest().authenticated().and()
