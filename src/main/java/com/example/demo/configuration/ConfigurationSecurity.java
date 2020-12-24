@@ -1,6 +1,7 @@
-package com.example.demo.security;
+package com.example.demo.configuration;
 
 import com.example.demo.filters.FilerAuth;
+import com.example.demo.security.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,7 +17,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity( prePostEnabled = true)
-public class SecurityTest extends WebSecurityConfigurerAdapter {
+public class ConfigurationSecurity extends WebSecurityConfigurerAdapter {
     @Autowired
     MyUserDetailsService myUserDetailsService;
     //my custom filter
@@ -56,9 +57,11 @@ public class SecurityTest extends WebSecurityConfigurerAdapter {
                 .and().formLogin();*/
 
         http.csrf().disable()
+                .cors()// we should add this for apply global configuration
+                .and()
                 .authorizeRequests().antMatchers("/authenticate").permitAll()
-                .antMatchers("/annonce/**").permitAll()
-                .antMatchers("/user").permitAll()
+                .antMatchers("/annonce**").authenticated()
+                .antMatchers("/user**").permitAll()
                 .antMatchers("/admin").hasAnyRole("ADMIN")
                 .anyRequest().authenticated().and()
                 .exceptionHandling().and().sessionManagement()

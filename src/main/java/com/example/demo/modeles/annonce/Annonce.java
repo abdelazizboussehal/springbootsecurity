@@ -8,6 +8,8 @@ import java.util.Set;
 @Table(name="annonces")
 public class Annonce {
     @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ADS_SEQ")
+    @SequenceGenerator(name="EMP_SEQ", sequenceName="EMP_SEQ", allocationSize=100)
     private int id;
     private int price;
     private String type;

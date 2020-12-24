@@ -1,7 +1,7 @@
 package com.example.demo.security;
 
 import com.example.demo.user.User;
-import com.example.demo.user.userRopository;
+import com.example.demo.user.UserRopository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -12,9 +12,9 @@ import java.util.Optional;
 @Service
 public class MyUserDetailsService implements UserDetailsService {
     final
-    userRopository userRepository;
+    UserRopository userRepository;
 
-    public MyUserDetailsService(userRopository userRepository) {
+    public MyUserDetailsService(UserRopository userRepository) {
         this.userRepository = userRepository;
     }
 

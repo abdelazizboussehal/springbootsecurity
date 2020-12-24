@@ -12,10 +12,10 @@ public class mainController {
         return "<h1> i am all</h1>";
     }
 
-    @RequestMapping("/user")
+    /*@RequestMapping("/user")
     public @ResponseBody String user(){
         return "<h1> i am user</h1>";
-    }
+    }*/
 
     @RequestMapping("/admin")
     public @ResponseBody String admin(){

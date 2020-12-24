@@ -29,7 +29,7 @@ public class AuthenticationController {
         try {
             //Testing if user has a right information with userDeatils services
             authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
+                    new UsernamePasswordAuthenticationToken(authenticationRequest.getUserName(), authenticationRequest.getPassword())
             );
         }
         catch (BadCredentialsException e) {
@@ -37,7 +37,7 @@ public class AuthenticationController {
         }
 
         //get user details for create JWT
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUserName());
         // Create JWT
         final String jwt = jwtTokenUtil.generateToken(userDetails);
 

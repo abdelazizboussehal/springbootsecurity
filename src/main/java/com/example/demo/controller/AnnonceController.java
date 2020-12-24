@@ -36,9 +36,14 @@ public class AnnonceController {
 
     @RequestMapping(method = RequestMethod.POST,value = "/annonce")
     // Authority only for writing
-    @PreAuthorize("hasAnyAuthority('annonce:write')")
+//    @PreAuthorize("hasAnyAuthority('annonce:write')")
     public Annonce annonce(@RequestBody Annonce annonce){
-        annonce.getRphoto().forEach(crudPhoto::save);
+        try {
+            annonce.getRphoto().forEach(crudPhoto::save);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
         return crudAnnonce.save(annonce);
     }
 }
