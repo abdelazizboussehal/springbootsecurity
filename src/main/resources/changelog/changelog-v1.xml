@@ -6,7 +6,7 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
     <changeSet author="dickson-the-developer" id="8">
         <createTable
-                schemaName="springsecurity"
+                schemaName="test"
                 tableName="car"
                 tablespace="A String">
             <column name="number-plate" type="varchar(255)"/>
